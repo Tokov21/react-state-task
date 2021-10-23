@@ -1,6 +1,8 @@
 import React from "react";
 
-import "./BurgerMenu.css";
+import NavMenu from "../NavMenu";
+
+import "./BurgerMenu.sass";
 
 class BurgerMenu extends React.Component {
   constructor(props) {
@@ -8,9 +10,13 @@ class BurgerMenu extends React.Component {
 
     this.state = {
       isShown: false,
+      links: [
+        { text: "Basics", link: "https://google.com" },
+        { text: "Documentation", link: "https://google.com" },
+        { text: "Partners", link: "https://google.com" },
+        { text: "Feedback", link: "https://google.com" },
+      ],
     };
-
-    this.menu = "menu-hidden";
 
     this.switchState = () => {
       this.setState((prevState) => ({
@@ -25,7 +31,9 @@ class BurgerMenu extends React.Component {
     return (
       <div>
         <div onClick={this.switchState}>On/Off</div>
-        <div className={this.menu}>Text</div>
+        <div className={this.menu}>
+          <NavMenu links={this.state.links} />
+        </div>
       </div>
     );
   }
