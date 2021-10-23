@@ -8,21 +8,20 @@ class BurgerMenu extends React.Component {
 
     this.state = {
       isShown: false,
-      isOpen: true,
     };
 
     this.menu = "menu-hidden";
 
     this.switchState = () => {
-      this.setState((prevState) => {
-        return { isShown: !prevState.isShown, isOpen: !prevState.isOpen };
-      });
-
-      this.menu = this.state.isShown ? "menu-hidden" : "menu-shown";
+      this.setState((prevState) => ({
+        isShown: !prevState.isShown,
+      }));
     };
   }
 
   render() {
+    this.menu = this.state.isShown ? "menu-shown" : "menu-hidden";
+
     return (
       <div>
         <div onClick={this.switchState}>On/Off</div>
